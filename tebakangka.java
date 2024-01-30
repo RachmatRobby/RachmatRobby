@@ -42,9 +42,10 @@ public class tebakangka {
             
             int max = 100;
             int min = 0;
-            int x = (int) ((Math.random() * (max - min)) + min);
+             
             
            while (guess) {
+               int x = (int) ((Math.random() *  (max - min)) + min);
                System.out.println("Apakah Angka Yang anda tebak lebih besar dari angka "+ x +"(Y/T)");
                String answer =input.next();
                
@@ -58,7 +59,7 @@ public class tebakangka {
                    System.out.println("Inputan Salah");
                }
               if (max-min == 1){
-                        System.out.print("Apakah angka yang Anda miliki lebih besar dari " + min + "? (Y/T) : ");
+                        System.out.println("Apakah angka yang Anda miliki lebih besar dari " + min + "? (Y/T) ");
                         String lebihBesar = input.next();
                         if (lebihBesar.equalsIgnoreCase("y")){
                             System.out.println();
@@ -68,15 +69,13 @@ public class tebakangka {
                         } else {
                             System.out.println();
                             System.out.println("Angka yang anda miliki adalah " + min);
-                            System.out.println("yeayyyyyy TAMAT !!! Seperti kisahku :(");
                             break;
                         }
                     } else if (max-min == 0){
                         System.out.println("Angka yang anda miliki adalah " + max);
-                        System.out.println("yeayyyyyy TAMAT !!!");
                         break;
                     }
-               x = (min + max)/2;
+//               x = (min + max)/2;
            }
            
            while(playAgain){
@@ -86,14 +85,13 @@ public class tebakangka {
                if(again.equalsIgnoreCase("Y")  ) {
                    start =true;
                    guess =true;
-                   playAgain =false;
                }else if (again.equalsIgnoreCase("t")){
                    start = false;
-                   playAgain =false;
                }
                else{
                    System.out.println("Inputan Salah");
                }
+               break;
            }   
         }
         System.out.println("\n Terimakasih telah Bermain");

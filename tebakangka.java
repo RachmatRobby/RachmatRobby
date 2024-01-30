@@ -49,7 +49,7 @@ public class tebakangka {
                String answer =input.next();
                
                if(answer.equalsIgnoreCase("Y")) {
-                   min = x + 1;
+                   min = x;
                }  else if(answer.equalsIgnoreCase("T") ){
                    max = x;
                
@@ -57,10 +57,23 @@ public class tebakangka {
                else{
                    System.out.println("Inputan Salah");
                }
-               if (max - min <= 1) {
-                        System.out.println();
-                        System.out.println("Angka yang Anda pilih " + (answer.equals("y") ? max : min));
-                        System.out.println("Eelamatt");
+              if (max-min == 1){
+                        System.out.print("Apakah angka yang Anda miliki lebih besar dari " + min + "? (Y/T) : ");
+                        String lebihBesar = input.next();
+                        if (lebihBesar.equalsIgnoreCase("y")){
+                            System.out.println();
+                            System.out.println("Angka yang anda miliki adalah " + max);
+
+                            break;
+                        } else {
+                            System.out.println();
+                            System.out.println("Angka yang anda miliki adalah " + min);
+                            System.out.println("yeayyyyyy TAMAT !!! Seperti kisahku :(");
+                            break;
+                        }
+                    } else if (max-min == 0){
+                        System.out.println("Angka yang anda miliki adalah " + max);
+                        System.out.println("yeayyyyyy TAMAT !!!");
                         break;
                     }
                x = (min + max)/2;

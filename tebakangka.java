@@ -12,7 +12,7 @@ package alpro;
 import java.util.Scanner;
 
 public class tebakangka {
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         boolean start = true;
         boolean done = true;
@@ -40,56 +40,41 @@ public class tebakangka {
 
         while (start) {
             
-            int angkaTebak = inputTebakan(input);
             int max = 100;
             int min = 0;
+            int x = (int) ((Math.random() * (max - min)) + min);
             
            while (guess) {
-               int x = (int) ((Math.random() * (max - min)) + min);
                System.out.println("Apakah Angka Yang anda tebak lebih besar dari angka "+ x +"(Y/T)");
                String answer =input.next();
                
-               if(answer.equals("Y") || answer.equals("y")) {
-                   if (angkaTebak >= x) {
-                       min = x;
-                       System.out.println("Benar");
-                   }else{
-                       System.out.println("salah");
-                   }
-                   
-                   if(angkaTebak == x) {
-                       System.out.println("jawabannya adalah "  + x);
-                       guess = false;
-                       playAgain = true;
-                   }
-               }  else if(answer.equals("T") || answer.equals("t")){
-                   if (angkaTebak <= x) {
-                       max = x;
-                       System.out.println("Benar");
-                   } else{
-                       System.out.println("Salah");
-                   }
-                   
-                   if (angkaTebak == x){
-                       System.out.println("Jawabannya Adalah " + x);
-                       guess = false;
-                       playAgain = true;
-                   }
+               if(answer.equalsIgnoreCase("Y")) {
+                   min = x + 1;
+               }  else if(answer.equalsIgnoreCase("T") ){
+                   max = x;
+               
                }
                else{
                    System.out.println("Inputan Salah");
                }
+               if (max - min <= 1) {
+                        System.out.println();
+                        System.out.println("Angka yang Anda pilih " + (answer.equals("y") ? max : min));
+                        System.out.println("Eelamatt");
+                        break;
+                    }
+               x = (min + max)/2;
            }
            
            while(playAgain){
                System.out.println("Apakah Anda Ingin Bermain Lagi ? (Y/T)");
                String again =input.next();
                
-               if(again.equals("Y")  || again.equals("y")) {
+               if(again.equalsIgnoreCase("Y")  ) {
                    start =true;
                    guess =true;
                    playAgain =false;
-               }else if (again.equals("t") || again.equals("t")){
+               }else if (again.equalsIgnoreCase("t")){
                    start = false;
                    playAgain =false;
                }
@@ -100,12 +85,9 @@ public class tebakangka {
         }
         System.out.println("\n Terimakasih telah Bermain");
     }
+}
     
 
-    private static int inputTebakan(Scanner input) {
-        System.out.println("\nTentukan Angka yang akan ditebak (0-100):");
-        return input.nextInt();
-    }
-}
+    
          
  
